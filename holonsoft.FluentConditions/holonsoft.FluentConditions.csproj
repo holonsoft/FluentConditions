@@ -3,10 +3,26 @@
   <PropertyGroup>
     <Authors>Alexander Bülow, Christian Vogt</Authors>
     <Company>holonsoft</Company>
+    <PackageProjectUrl>https://github.com/holonsoft/FluentConditions</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Copyright>Alexander Bülow, Christian Vogt</Copyright>
+    <Description>
+      FluentConditions is a framework for checking function parameters for certain criterias.
+      For example asserting that your input is not null.
+      You also get clean error messages with a reference to the line of code that faulted.
+    </Description>
+    <RepositoryUrl>https://github.com/holonsoft/FluentConditions</RepositoryUrl>
     <Version>1.0.0.1</Version>
     <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
