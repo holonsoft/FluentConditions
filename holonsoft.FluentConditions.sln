@@ -5,12 +5,13 @@ VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "holonsoft.FluentConditions", "holonsoft.FluentConditions\holonsoft.FluentConditions.csproj", "{9FED399F-D5FC-4FBC-B844-02CFEA0A99CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "holonsoft.FluentConditions.Tests", "holonsoft.FluentConditions.Tests\holonsoft.FluentConditions.Tests.csproj", "{C2D8BA10-D330-4650-8860-5BDCB874D618}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "holonsoft.FluentConditions.Tests", "holonsoft.FluentConditions.Tests\holonsoft.FluentConditions.Tests.csproj", "{C2D8BA10-D330-4650-8860-5BDCB874D618}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3D09A3B3-E0F7-49FC-B98B-E1B4E9410BAC}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
