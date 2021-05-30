@@ -5,7 +5,7 @@
     <Company>holonsoft</Company>
     <PackageProjectUrl>https://github.com/holonsoft/FluentConditions</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Copyright>Alexander Bülow, Christian Vogt</Copyright>
+    <Copyright>holonsoft</Copyright>
     <Description>
       FluentConditions is a framework for checking function parameters for certain criterias.
       For example asserting that your input is not null.
