@@ -14,7 +14,7 @@ namespace holonsoft.FluentConditions.Tests
 
 			Action requireAction
 				= () => enumerable.Requires(nameof(enumerable))
-													.IsNotEmpty<int, int[]>();
+													.IsNotEmpty();
 
 			requireAction.Should().NotThrow();
 
@@ -30,11 +30,43 @@ namespace holonsoft.FluentConditions.Tests
 
 			Action requireAction
 				= () => enumerable.Requires(nameof(enumerable))
-													.IsNotEmpty<int, IEnumerable<int>>();
+													.IsNotEmpty();
 
 			requireAction.Should().NotThrow();
 
 			enumerable = Array.Empty<int>();
+
+			requireAction.Should().Throw<ArgumentOutOfRangeException>();
+		}
+
+		[Fact]
+		public void TestHasElementHashSet()
+		{
+			HashSet<int> enumerable = new() { 1, 2 };
+
+			Action requireAction
+				= () => enumerable.Requires(nameof(enumerable))
+													.IsNotEmpty();
+
+			requireAction.Should().NotThrow();
+
+			enumerable = new();
+
+			requireAction.Should().Throw<ArgumentOutOfRangeException>();
+		}
+
+		[Fact]
+		public void TestHasElementList()
+		{
+			List<int> enumerable = new() { 1, 2 };
+
+			Action requireAction
+				= () => enumerable.Requires(nameof(enumerable))
+													.IsNotEmpty();
+
+			requireAction.Should().NotThrow();
+
+			enumerable = new();
 
 			requireAction.Should().Throw<ArgumentOutOfRangeException>();
 		}
