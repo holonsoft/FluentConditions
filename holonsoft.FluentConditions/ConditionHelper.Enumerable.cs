@@ -6,11 +6,11 @@ namespace holonsoft.FluentConditions
 {
 	public static partial class ConditionHelper
 	{
-		public static ConditionValueHolder<IEnumerable<T>> IsEmpty<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
-			string exceptionMessage = null)
+		public static ConditionValueHolder<TEnumerable> IsEmpty<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 
 			if (!value.Any())
 				return valueHolder;
@@ -20,11 +20,11 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' is not empty!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> IsNotEmpty<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
-			string exceptionMessage = null)
+		public static ConditionValueHolder<TEnumerable> IsNotEmpty<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 
 			if (value.Any())
 				return valueHolder;
@@ -34,12 +34,12 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' is empty!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> Contains<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
-			T containsValue,
-			string exceptionMessage = null)
+		public static ConditionValueHolder<TEnumerable> Contains<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
+			TElement containsValue,
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 
 			if (value.Contains(containsValue))
 				return valueHolder;
@@ -49,12 +49,12 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' does not contain '{containsValue}'!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> DoesNotContain<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
-			T containsValue,
-			string exceptionMessage = null)
+		public static ConditionValueHolder<TEnumerable> DoesNotContain<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
+			TElement containsValue,
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 
 			if (!value.Contains(containsValue))
 				return valueHolder;
@@ -64,12 +64,12 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' contains '{containsValue}'!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> ContainsAny<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
-			IEnumerable<T> containsValues,
-			string exceptionMessage = null)
+		public static ConditionValueHolder<TEnumerable> ContainsAny<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
+			IEnumerable<TElement> containsValues,
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 
 			if (value.Intersect(containsValues).Any())
 				return valueHolder;
@@ -79,12 +79,12 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' does not contain one of the defined values!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> DoesNotContainAny<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
-			IEnumerable<T> containsValues,
-			string exceptionMessage = null)
+		public static ConditionValueHolder<TEnumerable> DoesNotContainAny<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
+			IEnumerable<TElement> containsValues,
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 
 			if (!value.Intersect(containsValues).Any())
 				return valueHolder;
@@ -94,12 +94,12 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' contains one of the defined values!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> ContainsAll<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
-			IEnumerable<T> containsValues,
-			string exceptionMessage = null)
+		public static ConditionValueHolder<TEnumerable> ContainsAll<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
+			IEnumerable<TElement> containsValues,
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 
 			if (value.Intersect(containsValues).Count() == containsValues.Count())
 				return valueHolder;
@@ -109,12 +109,12 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' does not contain all of the defined values!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> DoesNotContainAll<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
-			IEnumerable<T> containsValues,
-			string exceptionMessage = null)
+		public static ConditionValueHolder<TEnumerable> DoesNotContainAll<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
+			IEnumerable<TElement> containsValues,
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 
 			if (value.Intersect(containsValues).Count() != containsValues.Count())
 				return valueHolder;
@@ -124,12 +124,12 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' contains all of the defined values!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> HasCount<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
+		public static ConditionValueHolder<TEnumerable> HasCount<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
 			int valueCount,
-			string exceptionMessage = null)
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 
 			if (value.Count() == valueCount)
 				return valueHolder;
@@ -139,12 +139,12 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' has not the expected element count '{valueCount}'!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> DoesNotHaveCount<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
+		public static ConditionValueHolder<TEnumerable> DoesNotHaveCount<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
 			int valueCount,
-			string exceptionMessage = null)
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 
 			if (value.Count() != valueCount)
 				return valueHolder;
@@ -154,12 +154,12 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' has an element count of '{valueCount}'!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> CountIsInRange<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
+		public static ConditionValueHolder<TEnumerable> CountIsInRange<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
 			int minCount, int maxCount,
-			string exceptionMessage = null)
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 			int valueCount = value.Count();
 
 			if (valueCount >= minCount && valueCount <= maxCount)
@@ -170,12 +170,12 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' element count is not in the range of '{minCount}' to '{maxCount}'!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> CountIsNotInRange<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
+		public static ConditionValueHolder<TEnumerable> CountIsNotInRange<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
 			int minCount, int maxCount,
-			string exceptionMessage = null)
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 			int valueCount = value.Count();
 
 			if (valueCount < minCount || valueCount > maxCount)
@@ -186,12 +186,12 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' element count is in the range of '{minCount}' to '{maxCount}'!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> CountIsLessThan<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
+		public static ConditionValueHolder<TEnumerable> CountIsLessThan<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
 			int maxCount,
-			string exceptionMessage = null) where T : IComparable<T>
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 			int valueCount = value.Count();
 
 			if (valueCount < maxCount)
@@ -202,12 +202,12 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' element count is bigger than '{maxCount}'!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> CountIsLessThanOrEqual<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
+		public static ConditionValueHolder<TEnumerable> CountIsLessThanOrEqual<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
 			int maxCount,
-			string exceptionMessage = null) where T : IComparable<T>
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 			int valueCount = value.Count();
 
 			if (valueCount <= maxCount)
@@ -218,12 +218,12 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' element count is bigger than '{maxCount}'!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> CountIsGreaterThan<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
+		public static ConditionValueHolder<TEnumerable> CountIsGreaterThan<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
 			int minCount,
-			string exceptionMessage = null) where T : IComparable<T>
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 			int valueCount = value.Count();
 
 			if (valueCount > minCount)
@@ -234,12 +234,12 @@ namespace holonsoft.FluentConditions
 				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' element count is smaller than '{minCount}'!"));
 		}
 
-		public static ConditionValueHolder<IEnumerable<T>> CountIsGreaterThanOrEqual<T>(
-			this ConditionValueHolder<IEnumerable<T>> valueHolder,
+		public static ConditionValueHolder<TEnumerable> CountIsGreaterThanOrEqual<TElement, TEnumerable>(
+			this ConditionValueHolder<TEnumerable> valueHolder,
 			int minCount,
-			string exceptionMessage = null) where T : IComparable<T>
+			string exceptionMessage = null) where TEnumerable : IEnumerable<TElement>
 		{
-			IEnumerable<T> value = valueHolder._value;
+			IEnumerable<TElement> value = valueHolder._value;
 			int valueCount = value.Count();
 
 			if (valueCount >= minCount)
