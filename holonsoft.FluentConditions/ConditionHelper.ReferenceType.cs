@@ -24,7 +24,7 @@ namespace holonsoft.FluentConditions
 		{
 			T value = valueHolder._value;
 
-			if (value == null)
+			if (value != null)
 				return valueHolder;
 
 			throw new ArgumentNullException(
