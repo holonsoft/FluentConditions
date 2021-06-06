@@ -10,16 +10,15 @@ As example:
 public void Test(bool boolValue = false)
 {
 	boolValue.Requires(nameof(boolValue))
-			 .IsTrue();
+		 .IsTrue();
 }
 ```
 
 would throw:
 
 ---
-'boolValue' is true!
+'boolValue' is false!
 At method 'Test' in 'C:\Path\To\Your.cs:5'
-
 ---
 
 ## Thank you
