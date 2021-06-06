@@ -17,8 +17,10 @@ public void Test(bool boolValue = false)
 would throw:
 
 ---
+
 'boolValue' is false!
 At method 'Test' in 'C:\Path\To\Your.cs:5'
+
 ---
 
 ## Thank you
