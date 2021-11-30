@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Authors>Alexander Bülow, Christian Vogt</Authors>
     <Company>holonsoft</Company>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 

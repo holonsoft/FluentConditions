@@ -12,8 +12,8 @@
       You also get clean error messages with a reference to the line of code that faulted.
     </Description>
     <RepositoryUrl>https://github.com/holonsoft/FluentConditions</RepositoryUrl>
-    <Version>1.0.1.5</Version>
-    <TargetFrameworks>netcoreapp3.1;net5.0;netstandard2.0;net472;net48</TargetFrameworks>
+    <Version>1.6.1</Version>
+    <TargetFrameworks>netcoreapp3.1;net5.0;netstandard2.0;net472;net48;net6.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryType>GIT</RepositoryType>
