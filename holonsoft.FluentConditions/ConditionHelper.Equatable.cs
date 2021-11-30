@@ -26,7 +26,7 @@ namespace holonsoft.FluentConditions
 		{
 			T value = valueHolder._value;
 
-			if (value.Equals(equalValue))
+			if (!value.Equals(equalValue))
 				return valueHolder;
 
 			throw new ArgumentOutOfRangeException(
