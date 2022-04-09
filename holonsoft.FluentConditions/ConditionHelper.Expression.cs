@@ -1,22 +1,20 @@
-﻿using System;
-
-namespace holonsoft.FluentConditions
+﻿namespace holonsoft.FluentConditions;
+public static partial class ConditionHelper
 {
-	public static partial class ConditionHelper
-	{
-		public static ConditionValueHolder<T> Evaluate<T>(
-			this ConditionValueHolder<T> valueHolder,
-			Func<T, bool> expression,
-			string exceptionMessage = null)
-		{
-			T value = valueHolder._value;
+  public static ConditionValueHolder<T> Evaluate<T>(
+    this ConditionValueHolder<T> valueHolder,
+    Func<T, bool> expression,
+    string exceptionMessage = null)
+  {
+    var value = valueHolder.Value;
 
-			if (expression(value))
-				return valueHolder;
+    if (expression(value))
+    {
+      return valueHolder;
+    }
 
-			throw new ArgumentOutOfRangeException(
-				valueHolder._valueName,
-				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' with value '{value}' does not fit criteria '{expression}'!"));
-		}
-	}
+    throw new ArgumentOutOfRangeException(
+        valueHolder.ValueName,
+        valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder.ValueName}' with value '{value}' does not fit criteria '{expression}'!"));
+  }
 }

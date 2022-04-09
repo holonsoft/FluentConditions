@@ -1,31 +1,31 @@
-﻿using System;
-
-namespace holonsoft.FluentConditions
+﻿namespace holonsoft.FluentConditions;
+public static partial class ConditionHelper
 {
-	public static partial class ConditionHelper
-	{
-		public static ConditionValueHolder<bool> IsTrue(
-			this ConditionValueHolder<bool> valueHolder,
-			string exceptionMessage = null)
-		{
-			if (valueHolder._value)
-				return valueHolder;
+  public static ConditionValueHolder<bool> IsTrue(
+    this ConditionValueHolder<bool> valueHolder,
+    string exceptionMessage = null)
+  {
+    if (valueHolder.Value)
+    {
+      return valueHolder;
+    }
 
-			throw new ArgumentOutOfRangeException(
-				valueHolder._valueName,
-				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' is false!"));
-		}
+    throw new ArgumentOutOfRangeException(
+        valueHolder.ValueName,
+        valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder.ValueName}' is false!"));
+  }
 
-		public static ConditionValueHolder<bool> IsFalse(
-			this ConditionValueHolder<bool> valueHolder,
-			string exceptionMessage = null)
-		{
-			if (!valueHolder._value)
-				return valueHolder;
+  public static ConditionValueHolder<bool> IsFalse(
+    this ConditionValueHolder<bool> valueHolder,
+    string exceptionMessage = null)
+  {
+    if (!valueHolder.Value)
+    {
+      return valueHolder;
+    }
 
-			throw new ArgumentOutOfRangeException(
-				valueHolder._valueName,
-				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder._valueName}' is true!"));
-		}
-	}
+    throw new ArgumentOutOfRangeException(
+        valueHolder.ValueName,
+        valueHolder.GetExceptionCallerText(exceptionMessage ?? $"'{valueHolder.ValueName}' is true!"));
+  }
 }

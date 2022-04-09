@@ -1,35 +1,35 @@
-﻿using System;
-
-namespace holonsoft.FluentConditions
+﻿namespace holonsoft.FluentConditions;
+public static partial class ConditionHelper
 {
-	public static partial class ConditionHelper
-	{
-		public static ConditionValueHolder<T> HasValue<T>(
-			this ConditionValueHolder<Nullable<T>> valueHolder,
-			string exceptionMessage = null) where T : struct
-		{
-			T? value = valueHolder._value;
+  public static ConditionValueHolder<T> HasValue<T>(
+    this ConditionValueHolder<Nullable<T>> valueHolder,
+    string exceptionMessage = null) where T : struct
+  {
+    var value = valueHolder.Value;
 
-			if (value.HasValue)
-				return Requires(value.Value, valueHolder);
+    if (value.HasValue)
+    {
+      return Requires(value.Value, valueHolder);
+    }
 
-			throw new ArgumentOutOfRangeException(
-				valueHolder._valueName,
-				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"Nullable '{valueHolder._valueName}' has no value!"));
-		}
+    throw new ArgumentOutOfRangeException(
+        valueHolder.ValueName,
+        valueHolder.GetExceptionCallerText(exceptionMessage ?? $"Nullable '{valueHolder.ValueName}' has no value!"));
+  }
 
-		public static ConditionValueHolder<Nullable<T>> HasNoValue<T>(
-			this ConditionValueHolder<Nullable<T>> valueHolder,
-			string exceptionMessage = null) where T : struct
-		{
-			T? value = valueHolder._value;
+  public static ConditionValueHolder<Nullable<T>> HasNoValue<T>(
+    this ConditionValueHolder<Nullable<T>> valueHolder,
+    string exceptionMessage = null) where T : struct
+  {
+    var value = valueHolder.Value;
 
-			if (!value.HasValue)
-				return valueHolder;
+    if (!value.HasValue)
+    {
+      return valueHolder;
+    }
 
-			throw new ArgumentOutOfRangeException(
-				valueHolder._valueName,
-				valueHolder.GetExceptionCallerText(exceptionMessage ?? $"Nullable '{valueHolder._valueName}' has a value '{value.Value}'!"));
-		}
-	}
+    throw new ArgumentOutOfRangeException(
+        valueHolder.ValueName,
+        valueHolder.GetExceptionCallerText(exceptionMessage ?? $"Nullable '{valueHolder.ValueName}' has a value '{value.Value}'!"));
+  }
 }
