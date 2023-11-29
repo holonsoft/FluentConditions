@@ -12,21 +12,27 @@
       You also get clean error messages with a reference to the line of code that faulted.
     </Description>
     <RepositoryUrl>https://github.com/holonsoft/FluentConditions</RepositoryUrl>
-    <Version>1.6.2</Version>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
+    <Version>2.0.1</Version>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0;net8.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <ImplicitUsings>enable</ImplicitUsings>
     <DebugType>Embedded</DebugType>
     <RepositoryType>GIT</RepositoryType>
     <PackageId>holonsoft.FluentConditions</PackageId>
-    <PackageTags>fluent;conditions;netstandard2.1;netstandard2.0;net6</PackageTags>
+    <PackageTags>#fluent#conditions#netstandard2.1#netstandard2.0#net6#net7#net8</PackageTags>
+    <Title>Fluent Conditions by holonsoft</Title>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
